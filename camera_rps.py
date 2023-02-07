@@ -10,8 +10,8 @@ class Rps():
 
     def __init__(self,choices_list = ['rock','paper','scissors']):
         self.choices_list = choices_list[:3]  
-        self.user_score = 0
-        self.computer_score = 0
+        self.user_wins = 0
+        self.computer_wins = 0
         self.model = load_model('keras_model.h5')
         self.cap = cv2.VideoCapture(0)
         self.data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
@@ -53,53 +53,53 @@ class Rps():
         """Function provides logic for the winner of RPS"""
         if user_choice == "rock":
             if comp_choice == 'scissors':
-                self.user_score += 1
+                self.user_wins += 1
                 print(f"Nice, {user_choice} beats {comp_choice}, you win!")
-                print(f"The score is {self.user_score} {self.computer_score}")
+                print(f"The score is {self.user_wins} {self.computer_wins}")
             elif user_choice == comp_choice:
-                self.user_score +=1
-                self.computer_score +=1
+                self.user_wins +=1
+                self.computer_wins +=1
                 print(f"It's a draw. You both chose {user_choice}")
-                print(f"The score is {self.user_score} {self.computer_score}")
+                print(f"The score is {self.user_wins} {self.computer_wins}")
             else:
-                self.computer_score +=1
+                self.computer_wins +=1
                 print(f"Ouch, {comp_choice} beats {user_choice} You lose this round.")
-                print(f"The score is {self.user_score} {self.computer_score}")
+                print(f"The score is {self.user_wins} {self.computer_wins}")
 
         if user_choice == "scissors":
                 if comp_choice == "paper":
-                    self.user_score +=1
+                    self.user_wins +=1
                     print(f"You have won, {user_choice} beats {comp_choice}.")
-                    print(f"The score is {self.user_score} {self.computer_score}")
+                    print(f"The score is {self.user_wins} {self.computer_wins}")
                 elif comp_choice == user_choice:
-                    self.user_score +=1
-                    self.computer_score +=1
+                    self.user_wins +=1
+                    self.computer_wins +=1
                     print(f"You both chose {user_choice}. It's a draw!")
-                    print(f"The score is {self.user_score} {self.computer_score}")
+                    print(f"The score is {self.user_wins} {self.computer_wins}")
                 else:
-                    self.computer_score +=1
+                    self.computer_wins +=1
                     print(f"You have lost, {comp_choice} beats {user_choice}.")
-                    print(f"The score is {self.user_score} {self.computer_score}")
+                    print(f"The score is {self.user_wins} {self.computer_wins}")
 
         if user_choice == "paper":
                 if comp_choice == "rock":
-                    self.user_score +=1
+                    self.user_wins +=1
                     print(f"You have won, {user_choice} beats {comp_choice}.")
-                    print(f"The score is {self.user_score} {self.computer_score}")
+                    print(f"The score is {self.user_wins} {self.computer_wins}")
                 elif comp_choice == user_choice:
-                    self.user_score +=1
-                    self.computer_score +=1
+                    self.user_wins +=1
+                    self.computer_wins +=1
                     print(f"You both chose {user_choice}. It's a draw!")
-                    print(f"The score is {self.user_score} {self.computer_score}")
+                    print(f"The score is {self.user_wins} {self.computer_wins}")
                 else:
-                    self.computer_score +=1
+                    self.computer_wins +=1
                     print(f"You have lost, {comp_choice} beats {user_choice}.")
-                    print(f"The score is {self.user_score} {self.computer_score}")
+                    print(f"The score is {self.user_wins} {self.computer_wins}")
 
-        if self.user_score == 3:
+        if self.user_wins == 3:
              print("Well done, you have won the game")
 
-        elif self.user_score ==3 and self.computer_score ==3:
+        elif self.user_wins ==3 and self.computer_wins ==3:
             print("You both tied the game")
 
         else: 
@@ -109,7 +109,7 @@ class Rps():
     def get_choices(self):
                 """Takes computer and user inputs and passes them to the get_winner() function. Also uses while loop\n
                 until criteria is satisfied"""
-                while self.user_score < 3 and self.computer_score <3:
+                while self.user_wins < 3 and self.computer_wins <3:
                     user_choice = self.get_prediction()
                     comp_choice = random.choice(self.choices_list)
                     self.get_winner(user_choice,comp_choice)

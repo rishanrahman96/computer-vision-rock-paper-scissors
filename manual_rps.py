@@ -6,12 +6,12 @@ user_score = 0
 computer_score = 0
 
 
-def get_comp_choice(choices):
+def get_computer_choice(choices):
     computer_choice = random.choice(choices)
     return computer_choice
 
 
-def get_user_input():
+def get_user_choice():
     user_input = input("Please select an option: ")
     if user_input in choices:
         return user_input
@@ -67,7 +67,10 @@ def get_winner(user_input,comp_input):
         print("Unlucky pal")
 
 
-while user_score <3 and computer_score <3:
-    comp_choice = get_comp_choice(choices)
-    user_choice = get_user_input()
-    get_winner(user_choice,comp_choice)
+def play():
+    while user_score <3 and computer_score <3:
+        comp_choice = get_computer_choice(choices)
+        user_choice = get_user_choice()
+        get_winner(user_choice,comp_choice)
+
+play()
