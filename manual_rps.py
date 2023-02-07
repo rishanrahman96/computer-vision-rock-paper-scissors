@@ -1,12 +1,14 @@
 import random
 
-choices = ['rock','paper','scissors']
+
 
 user_score = 0
 computer_score = 0
 
 
-def get_computer_choice(choices):
+def get_computer_choice():
+    global choices
+    choices = ['rock','paper','scissors']
     computer_choice = random.choice(choices)
     return computer_choice
 
@@ -69,7 +71,7 @@ def get_winner(user_input,comp_input):
 
 def play():
     while user_score <3 and computer_score <3:
-        comp_choice = get_computer_choice(choices)
+        comp_choice = get_computer_choice()
         user_choice = get_user_choice()
         get_winner(user_choice,comp_choice)
 
