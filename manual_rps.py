@@ -1,24 +1,73 @@
-import cv2
-from keras.models import load_model
-import numpy as np
-model = load_model('keras_model.h5')
-cap = cv2.VideoCapture(0)
-data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+import random
 
-while True: 
-    ret, frame = cap.read()
-    resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
-    image_np = np.array(resized_frame)
-    normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
-    data[0] = normalized_image
-    prediction = model.predict(data)
-    cv2.imshow('frame', frame)
-    # Press q to close the window
-    print(prediction)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-            
-# After the loop release the cap object
-cap.release()
-# Destroy all the windows
-cv2.destroyAllWindows()
+choices = ['rock','paper','scissors']
+
+user_score = 0
+computer_score = 0
+
+
+def get_comp_choice(choices):
+    computer_choice = random.choice(choices)
+    return computer_choice
+
+
+def get_user_input():
+    user_input = input("Please select an option: ")
+    if user_input in choices:
+        return user_input
+    else:
+        print("Please choose a valid option.")
+
+def get_winner(user_input,comp_input):
+    if user_input == "rock":
+        if comp_input == "scissors":
+            global user_score
+            user_score += 1
+            print(f"You have won, {user_input} beats {comp_input}.")
+        elif comp_input == user_input:
+            user_score +=1
+            global computer_score
+            computer_score +=1
+            print(f"You both chose {user_input}. It's a draw!")
+        else:
+            computer_score += 1
+            print(f"You have lost, {comp_input} beats {user_input}.")
+
+    if user_input == "scissors":
+        if comp_input == "paper":
+            user_score +=1
+            print(f"You have won, {user_input} beats {comp_input}.")
+        elif comp_input == user_input:
+            user_score +=1
+            computer_score +=1
+            print(f"You both chose {user_input}. It's a draw!")
+        else:
+            computer_score +=1
+            print(f"You have lost, {comp_input} beats {user_input}.")
+
+    if user_input == "paper":
+        if comp_input == "rock":
+            user_score +=1
+            print(f"You have won, {user_input} beats {comp_input}.")
+        elif comp_input == user_input:
+            user_score +=1
+            computer_score +=1
+            print(f"You both chose {user_input}. It's a draw!")
+        else:
+            computer_score +=1
+            print(f"You have lost, {comp_input} beats {user_input}.")
+
+    if user_score == 3:
+        print("Well done, you won")
+
+    if user_score ==3 and computer_score ==3:
+        print("You have both drawn the game.")
+
+    if computer_score ==3:
+        print("Unlucky pal")
+
+
+while user_score <3 and computer_score <3:
+    comp_choice = get_comp_choice(choices)
+    user_choice = get_user_input()
+    get_winner(user_choice,comp_choice)

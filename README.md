@@ -32,3 +32,6 @@ This milestone involved integrating the RPS-Template.py file into my manual rps 
 Knowing this, I split the RPS template file into two functions. One to stop the camera after its use as well as one to get the prediction itself.
 After this, instead of asking the user for the input, I applied the get_prediction() function and assigned it to user_choice.
 I also created a countdown for the terminal, which would ask for a user input every 3 seconds.
+
+## Conclusions
+I learnt a lot during this project, and initially it was not easy. To improve this project, I'd like to involve some sort of graphical interface for the user, as well as an option between goes to takes a break.
