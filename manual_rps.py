@@ -5,7 +5,7 @@ computer_score = 0
 
 
 def get_computer_choice():
-    choices = ['rock','paper','scissors']
+    choices = ['Rock','Paper','Scissors']
     computer_choice = random.choice(choices)
     return computer_choice
 
@@ -16,8 +16,8 @@ def get_user_choice():
    
 
 def get_winner(computer_choice,user_choice):
-    if user_choice == "rock":
-        if computer_choice == "scissors":
+    if user_choice == "Rock":
+        if computer_choice == "Scissors":
             global user_score
             user_score += 1
             print("You won!")
@@ -30,8 +30,8 @@ def get_winner(computer_choice,user_choice):
             computer_score += 1
             print("You lost")
 
-    if user_choice == "scissors":
-        if computer_choice == "paper":
+    if user_choice == "Scissors":
+        if computer_choice == "Paper":
             user_score +=1
             print("You won!")
         elif computer_choice == user_choice:
@@ -42,8 +42,8 @@ def get_winner(computer_choice,user_choice):
             computer_score +=1
             print("You lost")
 
-    if user_choice == "paper":
-        if computer_choice == "rock":
+    if user_choice == "Paper":
+        if computer_choice == "Rock":
             user_score +=1
             print("You won!")
         elif computer_choice == user_choice:
