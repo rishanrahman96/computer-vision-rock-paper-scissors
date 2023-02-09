@@ -15,13 +15,13 @@ def get_user_choice():
     return user_input
    
 
-def get_winner(user_input,comp_input):
-    if user_input == "rock":
-        if comp_input == "scissors":
+def get_winner(computer_choice,user_choice):
+    if user_choice == "rock":
+        if computer_choice == "scissors":
             global user_score
             user_score += 1
             print("You won!")
-        elif comp_input == user_input:
+        elif computer_choice == user_choice:
             user_score +=1
             global computer_score
             computer_score +=1
@@ -30,11 +30,11 @@ def get_winner(user_input,comp_input):
             computer_score += 1
             print("You lost")
 
-    if user_input == "scissors":
-        if comp_input == "paper":
+    if user_choice == "scissors":
+        if computer_choice == "paper":
             user_score +=1
             print("You won!")
-        elif comp_input == user_input:
+        elif computer_choice == user_choice:
             user_score +=1
             computer_score +=1
             print("It is a tie!")
@@ -42,11 +42,11 @@ def get_winner(user_input,comp_input):
             computer_score +=1
             print("You lost")
 
-    if user_input == "paper":
-        if comp_input == "rock":
+    if user_choice == "paper":
+        if computer_choice == "rock":
             user_score +=1
             print("You won!")
-        elif comp_input == user_input:
+        elif computer_choice == user_choice:
             user_score +=1
             computer_score +=1
             print("It is a tie!")
