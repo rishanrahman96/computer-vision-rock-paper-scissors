@@ -2,20 +2,18 @@ import random
 
 user_score = 0
 computer_score = 0
-choices = ['rock','paper','scissors']
 
 
 def get_computer_choice():
+    choices = ['rock','paper','scissors']
     computer_choice = random.choice(choices)
     return computer_choice
 
 
 def get_user_choice():
     user_input = input("Please select an option: ")
-    if user_input in choices:
-        return user_input
-    else:
-        print("Please choose a valid option.")
+    return user_input
+   
 
 def get_winner(user_input,comp_input):
     if user_input == "rock":
