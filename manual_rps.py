@@ -63,11 +63,10 @@ def get_winner(computer_choice,user_choice):
 #     if computer_score ==3:
 #         print("Unlucky pal")
 
+def play():
+    while user_score <3 and computer_score <3:
+        comp_choice = get_computer_choice()
+        user_choice = get_user_choice()
+        get_winner(user_choice,comp_choice)
 
-# def play():
-#     while user_score <3 and computer_score <3:
-#         comp_choice = get_computer_choice()
-#         user_choice = get_user_choice()
-#         get_winner(user_choice,comp_choice)
-
-# play()
+play()
