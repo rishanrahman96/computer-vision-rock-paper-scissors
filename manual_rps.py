@@ -2,11 +2,10 @@ import random
 
 user_score = 0
 computer_score = 0
+choices = ['rock','paper','scissors']
 
 
 def get_computer_choice():
-    global choices
-    choices = ['rock','paper','scissors']
     computer_choice = random.choice(choices)
     return computer_choice
 
